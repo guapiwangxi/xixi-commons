@@ -1,4 +1,4 @@
-# xixi-commons
+# xi-cache
 一个支持guava和redis等支撑多租户业务的多级缓存实现，有良好的抽象，并可以扩展其他缓存框架实现。
 
 
