@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: ch.qos.logback:logback-classic:1.2.3.5-struct">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/ch/qos/logback/logback-classic/1.2.3.5-struct/logback-classic-1.2.3.5-struct.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/ch/qos/logback/logback-classic/1.2.3.5-struct/logback-classic-1.2.3.5-struct-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/ch/qos/logback/logback-classic/1.2.3.5-struct/logback-classic-1.2.3.5-struct-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

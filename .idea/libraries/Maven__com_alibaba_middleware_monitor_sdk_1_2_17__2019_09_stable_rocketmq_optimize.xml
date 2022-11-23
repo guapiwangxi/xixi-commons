@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.alibaba.middleware:monitor-sdk:1.2.17--2019-09-stable-rocketmq-optimize">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/alibaba/middleware/monitor-sdk/1.2.17--2019-09-stable-rocketmq-optimize/monitor-sdk-1.2.17--2019-09-stable-rocketmq-optimize.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/alibaba/middleware/monitor-sdk/1.2.17--2019-09-stable-rocketmq-optimize/monitor-sdk-1.2.17--2019-09-stable-rocketmq-optimize-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/alibaba/middleware/monitor-sdk/1.2.17--2019-09-stable-rocketmq-optimize/monitor-sdk-1.2.17--2019-09-stable-rocketmq-optimize-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/xi-cache/xi-cache.iml" filepath="$PROJECT_DIR$/xi-cache/xi-cache.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xi-util/xi-util.iml" filepath="$PROJECT_DIR$/xi-util/xi-util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xixi-commons.iml" filepath="$PROJECT_DIR$/xixi-commons.iml" />
+    </modules>
+  </component>
+</project>

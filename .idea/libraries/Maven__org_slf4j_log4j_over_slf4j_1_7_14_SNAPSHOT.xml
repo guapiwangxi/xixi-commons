@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.slf4j:log4j-over-slf4j:1.7.14-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/log4j-over-slf4j/1.7.14-SNAPSHOT/log4j-over-slf4j-1.7.14-20161017.094413-5.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/log4j-over-slf4j/1.7.14-SNAPSHOT/log4j-over-slf4j-1.7.14-20161017.094413-5-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/log4j-over-slf4j/1.7.14-SNAPSHOT/log4j-over-slf4j-1.7.14-20161017.094413-5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.alibaba.middleware.apm:trace-common:1.1.12.3-bugfix">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/alibaba/middleware/apm/trace-common/1.1.12.3-bugfix/trace-common-1.1.12.3-bugfix.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/alibaba/middleware/apm/trace-common/1.1.12.3-bugfix/trace-common-1.1.12.3-bugfix-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/alibaba/middleware/apm/trace-common/1.1.12.3-bugfix/trace-common-1.1.12.3-bugfix-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
