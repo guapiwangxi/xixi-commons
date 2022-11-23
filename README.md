@@ -167,3 +167,123 @@ public class TaskTemplateServiceImpl implements TaskTemplateService {
 
 
 
+# xi-util
+一款打印业务日志的工具
+* 支持access、service日志切面打印
+* 支持业务日志自定义嵌套打印等
+
+## BizLogger 接口
+BizLogger 是一个接口，它长这个样子：
+```js
+/**
+ * 业务日志打印类，在文件中打印出 `key1=value1`key2=value2 的格式，方便在 xflush 中配置监控
+ */
+public interface BizLogger {
+
+    /**
+     * 往日志中添加 key 和 value，返回 this 方便链式调用
+     */
+    BizLogger ap(String key, Object value);
+
+    /**
+     * 往日志中添加 key 和 value，返回 this 方便链式调用
+     */
+    BizLogger ap(Map<String, Object> values);
+
+    /**
+     * 打印该行日志，日志级别为 INFO
+     */
+    void println();
+
+    /**
+     * 打印该行日志，使用指定的日志级别
+     */
+    void println(LogLevel logLevel);
+}
+```
+这个接口主要有两个方法：ap 方法可以往里面添加 key 和 value，println 方法把这些值拼装成统一的格式，输出到日志文件。For example: 
+```js
+BizLogger logger = new BizLoggerImpl("logger-name");
+try {
+    logger.ap("key1", "value1");
+    logger.ap("value2", "value2");
+} finally {
+    logger.println();
+}
+```
+输出结果：
+```js
+16:52:26.522 [main] INFO logger-name - `key1=value1`value2=value2
+```
+
+## ZLog 工具类
+单独使用 BizLogger 接口已经可以打印业务日志了，但是如果一个业务逻辑包含了多层方法调用，我们就必须把 logger 对象作为方法参数一层一层传递下去，这样实在是有点丑。
+
+这种情况，我们可以使用 ZLog 工具类，这个类里面有三个静态方法：
+* start: 创建一个 BizLogger 对象，存放到当前线程的上下文中
+* ap: 往当前上下文中的 logger 对象添加 key 和 value
+* end: 调用当前 logger 对象的 println 方法打印日志，并清除线程上下文
+
+使用方法：
+```js
+ZLog.start("logger-name");
+try {
+    ZLog.ap("key1", "value1");
+    ZLog.ap("value2", "value2");
+} finally {
+    ZLog.end();
+}
+```
+ZLog 还可以嵌套使用，比如：
+```js
+private void level1() {
+    ZLog.start("level1", true);
+    try {
+        ZLog.ap("a1", "0").ap("b1", "0");
+        level2();
+    } finally {
+        ZLog.end();
+    }
+}
+
+private void level2() {
+    ZLog.start("level2");
+    try {
+        ZLog.ap("a2", "0").ap("b2", "0");
+        level3();
+    } finally {
+        ZLog.end();
+    }
+}
+
+private void level3() {
+    ZLog.start("level3");
+    try {
+        ZLog.ap("a3", "0").ap("b3", "0");
+    } finally {
+        ZLog.end();
+    }
+}
+```
+输出结果：
+```js
+17:03:16.733 [main] INFO level3 - `a3=0`b3=0
+17:03:16.737 [main] INFO level2 - `a2=0`b2=0
+17:03:16.737 [main] INFO level1 - `a1=0`b1=0`a2=0`b2=0`a3=0`b3=0
+```
+注意：最外层的 level1 输出了内层所有变量的值，这是因为我们调用 start 方法时，把第二个参数设置为 true，这个开关可配置是否收集内部嵌套的日志数据，默认为 false
+
+@UseZLog 注解
+在方法上加上这个注解，Spring AOP 机制会拦截我们的方法调用，在进入方法之前，使用 ZLog.start 开启上下文，在方法退出之后，使用 ZLog.end 清理上下文。除此之外，这个注解还会自动输出 traceId、当前用户 ID 等更多数据，如果方法发生了异常，还会输出错误信息。
+
+例如：
+```js
+@UseZLog(logger = "logger-name")
+public void test() {
+    ZLog.ap("key", "value");
+}
+```
+输出结果：
+```js
+17:03:16.737 [main] INFO logger-name - `bizType=TestFacadeImpl.test`traceId=0b0af9f416178846664086188e240f`userId=0`key=value`spentTime=1
+```
